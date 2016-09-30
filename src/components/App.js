@@ -19,21 +19,28 @@ class App extends Component {
     const self = this
     const url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=10&format=json&origin=*'
     
-    fetch(url).then(response => {
+    return fetch(url).then(response => {
       return response.json()
     }).then(articles => {
-      self.setState({articles: articles.query.random})
+      return articles
+      // self.setState({articles: articles.query.random})
     })
-    
-    debugger
   }
 
   componentWillMount() {
-    this.getArticles()
+    const that = this
+    const articles =  this.getArticles().then(articles => {
+      that.setState({articles: articles.query.random})
+    })
   }
 
   articleLinkParser() {
-    return this.state.articles[0].title.replace(/ /g, "_")
+    if (this.state.articles.length == 0) {
+      return 'nothing'
+    } else {
+      return "http://wikipedia.org/wiki/" + this.state.articles[0].title.replace(/ /g, "_")
+    }
+    
   }
 
   render() {
@@ -41,7 +48,7 @@ class App extends Component {
       <div className="App">
         <div className="container">
           <div className="row">  		
-            <Frame src={this.articleLinkParser} />
+            <Frame src={this.articleLinkParser()} />
             <div className="col-xs-3 visible-sm visible-md visible-lg sidebar">
               <div className="logo"><h1>Wiki<br/><small>Roulette</small></h1></div>
               <Buttons />
