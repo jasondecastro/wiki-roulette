@@ -49,8 +49,10 @@ class App extends Component {
         return article.title.replace(/ /g, "_")
       })
 
-      self.setState({articles: parsedArticles})
-      self.setState({currentArticle: this.state.articles[0]})
+      self.setState({
+        articles: parsedArticles,
+        currentArticle: parsedArticles[0]
+      })
     })
   }
 
