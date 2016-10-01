@@ -11,7 +11,7 @@ class Buttons extends Component {
           PREVIOUS
         </button>
         <hr/>
-        <a href="" id="newTab" target="_blank" className="btn btn-sm btn-block btn-default btn-alt">View on Wikipedia</a>
+        <a href={"http://wikipedia.org/wiki/" + this.props.state.currentArticle} id="newTab" target="_blank" className="btn btn-sm btn-block btn-default btn-alt">View on Wikipedia</a>
       </div>
     )
   }
