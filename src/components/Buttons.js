@@ -4,7 +4,7 @@ class Buttons extends Component {
   render() {
     return (
       <div className="buttons">
-        <button className="btn btn-block btn-primary nav-forward">
+        <button onClick={this.props.nextArticle} className="btn btn-block btn-primary nav-forward">
           NEXT <span className="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
         </button>
         <button className="btn btn-block btn-default btn-sm nav-back" disabled="disabled">
