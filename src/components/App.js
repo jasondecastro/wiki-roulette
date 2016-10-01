@@ -17,6 +17,10 @@ class App extends Component {
     }
   }
 
+  nextArticle() {
+    debugger
+  }
+
   getArticles() {
     const url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=10&format=json&origin=*'
     
@@ -30,8 +34,12 @@ class App extends Component {
   componentWillMount() {
     const self = this
     this.getArticles().then(articles => {
-      self.setState({articles: articles.query.random})
-      self.setState({currentArticle: this.state.articles[0].title.replace(/ /g, "_")})
+      const parsedArticles = articles.query.random.map(article => {
+        return article.title.replace(/ /g, "_")
+      })
+      
+      self.setState({articles: parsedArticles})
+      self.setState({currentArticle: this.state.articles[0]})
     })
   }
 
@@ -43,7 +51,7 @@ class App extends Component {
             <Frame src={"http://wikipedia.org/wiki/" + this.state.currentArticle} />
             <div className="col-xs-3 visible-sm visible-md visible-lg sidebar">
               <div className="logo"><h1>Wiki<br/><small>Roulette</small></h1></div>
-              <Buttons state={this.state}/>
+              <Buttons nextArticle={this.nextArticle.bind(this)} state={this.state}/>
               <Footer />
             </div>
           </div>
