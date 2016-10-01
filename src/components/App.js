@@ -21,12 +21,16 @@ class App extends Component {
     this.setState({
       currentArticle: this.state.articles[this.state.articles.indexOf(this.state.currentArticle) + 1]
     })
+
+    window.history.pushState(this.state.articles[this.state.articles.indexOf(this.state.currentArticle) + 1].replace(/ /g, "_"), 'WikiRoulette &mdash; Random Wikipedia Articles', '/?p=' + this.state.articles[this.state.articles.indexOf(this.state.currentArticle) + 1])
   }
 
   previousArticle() {
     this.setState({
       currentArticle: this.state.articles[this.state.articles.indexOf(this.state.currentArticle) - 1]
     })
+
+    window.history.pushState(this.state.articles[this.state.articles.indexOf(this.state.currentArticle) - 1].replace(/ /g, "_"), 'WikiRoulette &mdash; Random Wikipedia Articles', '/?p=' + this.state.articles[this.state.articles.indexOf(this.state.currentArticle) - 1])
   }
 
   getArticles() {
@@ -49,10 +53,10 @@ class App extends Component {
         return article.title.replace(/ /g, "_")
       })
 
-      self.state = {
+      self.setState({
         articles: parsedArticles,
         currentArticle: parsedArticles[0]
-      }
+      })
     })
   }
 
