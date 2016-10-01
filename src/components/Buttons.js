@@ -7,7 +7,7 @@ class Buttons extends Component {
         <button onClick={this.props.nextArticle} className="btn btn-block btn-primary nav-forward">
           NEXT <span className="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
         </button>
-        <button className="btn btn-block btn-default btn-sm nav-back" disabled="disabled">
+        <button onClick={this.props.previousArticle} className="btn btn-block btn-default btn-sm nav-back" disabled={this.props.state.articles.indexOf(this.props.state.currentArticle) === 0}>
           PREVIOUS
         </button>
         <hr/>
