@@ -18,11 +18,13 @@ class App extends Component {
   }
 
   nextArticle() {
-    debugger
+    this.setState({
+      currentArticle: this.state.articles[this.state.articles.indexOf(this.state.currentArticle) + 1]
+    })
   }
 
   getArticles() {
-    const url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=10&format=json&origin=*'
+    const url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=50&format=json&origin=*'
     
     return fetch(url).then(response => {
       return response.json()
@@ -37,7 +39,7 @@ class App extends Component {
       const parsedArticles = articles.query.random.map(article => {
         return article.title.replace(/ /g, "_")
       })
-      
+
       self.setState({articles: parsedArticles})
       self.setState({currentArticle: this.state.articles[0]})
     })
