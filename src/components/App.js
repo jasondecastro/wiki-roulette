@@ -23,6 +23,12 @@ class App extends Component {
     })
   }
 
+  previousArticle() {
+    this.setState({
+      currentArticle: this.state.articles[this.state.articles.indexOf(this.state.currentArticle) - 1]
+    })
+  }
+
   getArticles() {
     console.log("Initializing...")
     console.log("Fetching 100 articles from Wikipedia...")
@@ -57,7 +63,7 @@ class App extends Component {
             <Frame src={"http://wikipedia.org/wiki/" + this.state.currentArticle} />
             <div className="col-xs-3 visible-sm visible-md visible-lg sidebar">
               <div className="logo"><h1>Wiki<br/><small>Roulette</small></h1></div>
-              <Buttons nextArticle={this.nextArticle.bind(this)} state={this.state}/>
+              <Buttons previousArticle={this.previousArticle.bind(this)} nextArticle={this.nextArticle.bind(this)} state={this.state}/>
               <Footer />
             </div>
           </div>
