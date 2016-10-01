@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   getArticles() {
-    const url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=50&format=json&origin=*'
+    const url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=100&format=json&origin=*'
     
     return fetch(url).then(response => {
       return response.json()
