@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import '../static/App.css';
-import '../static/bootstrap.min.css';
-import Frame from './Frame';
-import Footer from './Footer';
-import Buttons from './Buttons';
+import React, { Component } from 'react'
 
+import '../static/App.css'
+import '../static/bootstrap.min.css'
+
+import Frame from './Frame'
+import Footer from './Footer'
+import Buttons from './Buttons'
 
 class App extends Component {
   constructor() {
     super()
-    this.articleLinkParser = this.articleLinkParser.bind(this)
+    
     this.state = {
       articles: [],
       currentArticle: ''
@@ -34,20 +35,12 @@ class App extends Component {
     })
   }
 
-  articleLinkParser() {
-    if (this.state.articles.length === 0) {
-      return '/load.html'
-    } else {
-      return "http://wikipedia.org/wiki/" + this.state.currentArticle
-    }
-  }
-
   render() {
     return (
       <div className="App">
         <div className="container">
           <div className="row">  		
-            <Frame src={this.articleLinkParser()} />
+            <Frame src={"http://wikipedia.org/wiki/" + this.state.currentArticle} />
             <div className="col-xs-3 visible-sm visible-md visible-lg sidebar">
               <div className="logo"><h1>Wiki<br/><small>Roulette</small></h1></div>
               <Buttons state={this.state}/>
@@ -56,8 +49,8 @@ class App extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
