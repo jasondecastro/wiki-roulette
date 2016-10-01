@@ -11,4 +11,8 @@ class Frame extends Component {
   }
 }
 
+Frame.defaultProps = {
+  src: '/load.html'
+}
+
 module.exports = Frame
