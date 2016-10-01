@@ -24,6 +24,9 @@ class App extends Component {
   }
 
   getArticles() {
+    console.log("Initializing...")
+    console.log("Fetching 100 articles from Wikipedia...")
+
     const url = 'https://en.wikipedia.org/w/api.php?action=query&list=random&rnnamespace=0&rnlimit=100&format=json&origin=*'
     
     return fetch(url).then(response => {
@@ -46,6 +49,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("Rendering article.")
     return (
       <div className="App">
         <div className="container">
