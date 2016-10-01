@@ -36,7 +36,7 @@ class App extends Component {
 
   articleLinkParser() {
     if (this.state.articles.length == 0) {
-      return 'nothing'
+      return '/load.html'
     } else {
       return "http://wikipedia.org/wiki/" + this.state.articles[0].title.replace(/ /g, "_")
     }
