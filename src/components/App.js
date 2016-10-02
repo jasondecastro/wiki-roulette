@@ -7,6 +7,8 @@ import Frame from './Frame'
 import Footer from './Footer'
 import Buttons from './Buttons'
 
+
+
 class App extends Component {
   constructor() {
     super()
@@ -82,11 +84,15 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+    document.getElementById('app').focus()
+  }
+
   render() {
     console.log("Rendering article.")
-
+  
     return (
-      <div className="App" onKeyPress={this.navigate.bind(this)}>
+      <div className="App noSelect" id="app" tabIndex="0" onKeyDown={this.navigate.bind(this)}>
         <div className="container">
           <div className="row">  		
             <Frame src={"http://wikipedia.org/wiki/" + this.state.currentArticle} />
