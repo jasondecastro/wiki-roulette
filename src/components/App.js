@@ -95,7 +95,7 @@ class App extends Component {
       <div className="App noSelect" id="app" tabIndex="0" onKeyDown={this.navigate.bind(this)}>
         <div className="container">
           <div className="row">  		
-            <Frame src={"http://wikipedia.org/wiki/" + this.state.currentArticle} />
+            <Frame src={"https://wikipedia.org/wiki/" + this.state.currentArticle} />
             <div className="col-xs-3 visible-sm visible-md visible-lg sidebar">
               <div className="logo"><h1>Wiki<br/><small>Roulette</small></h1></div>
               <Buttons previousArticle={this.previousArticle.bind(this)} nextArticle={this.nextArticle.bind(this)} state={this.state}/>
