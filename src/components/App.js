@@ -15,6 +15,8 @@ class App extends Component {
       articles: [],
       currentArticle: ''
     }
+
+    this.checkStatus()
   }
 
   nextArticle() {
@@ -31,6 +33,15 @@ class App extends Component {
     })
 
     window.history.pushState(this.state.articles[this.state.articles.indexOf(this.state.currentArticle) - 1].replace(/ /g, "_"), 'WikiRoulette &mdash; Random Wikipedia Articles', '/?p=' + this.state.articles[this.state.articles.indexOf(this.state.currentArticle) - 1])
+  }
+
+  checkStatus() {
+    if (!this.state.currentArticle.includes(window.location.href)) {
+      const matches = window.location.href.match(/=(.+)/)
+      if (matches) {
+        this.setState({currentArticle: matches[1]})
+      }
+    }
   }
 
   getArticles() {
@@ -62,8 +73,9 @@ class App extends Component {
 
   render() {
     console.log("Rendering article.")
+
     return (
-      <div className="App">
+      <div className="App" onMouseOver={this.checkStatus.bind(this)}>
         <div className="container">
           <div className="row">  		
             <Frame src={"http://wikipedia.org/wiki/" + this.state.currentArticle} />
