@@ -6,14 +6,7 @@ import '../static/bootstrap.min.css'
 import Frame from './Frame'
 import Footer from './Footer'
 import Buttons from './Buttons'
-
-const navStyle = {
-  display: 'none'
-}
-
-const spanStyle = {
-  fontWeight: 300
-}
+import NavBar from './NavBar'
 
 class App extends Component {
   constructor() {
@@ -99,30 +92,7 @@ class App extends Component {
   
     return (
       <div className="App noSelect" id="app" tabIndex="0" onKeyDown={this.navigate.bind(this)}>
-        <nav className="navbar navbar-default navbar-fixed-top visible-xs" style={navStyle}>
-          <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-            <a className="navbar-brand" href="#"><strong>WIKI</strong><span style={spanStyle}>Roulette</span></a>
-            <button type="button" className="navbar-toggle collapsed nav-forward btn-primary btn-nav-forward">
-              <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            </button>
-            <button type="button" className="navbar-toggle collapsed nav-back btn-nav-back">
-              <span className="glyphicon glyphicon-chevron-left" aria-hidden="true" disabled="disabled"></span>
-            </button>
-            </div>
-            <div id="navbar" className="navbar-collapse collapse">
-              <ul className="nav navbar-nav navbar-right">
-                <li><a href="about.html">About</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <NavBar previousArticle={this.previousArticle.bind(this)} nextArticle={this.nextArticle.bind(this)} state={this.state}/>
       
         <div className="container">
           <div className="row">  		
