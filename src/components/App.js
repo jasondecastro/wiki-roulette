@@ -36,11 +36,20 @@ class App extends Component {
   }
 
   checkStatus() {
+    console.log("Checking status.")
     if (!this.state.currentArticle.includes(window.location.href)) {
       const matches = window.location.href.match(/=(.+)/)
       if (matches) {
         this.setState({currentArticle: matches[1]})
       }
+    }
+  }
+
+  navigate(e) {
+    if (e.keyCode === 37) {
+      this.previousArticle()
+    } else if (e.keyCode === 39) {
+      this.nextArticle()
     }
   }
 
@@ -68,6 +77,8 @@ class App extends Component {
         articles: parsedArticles,
         currentArticle: parsedArticles[0]
       })
+
+      this.checkStatus()
     })
   }
 
@@ -75,7 +86,7 @@ class App extends Component {
     console.log("Rendering article.")
 
     return (
-      <div className="App" onMouseOver={this.checkStatus.bind(this)}>
+      <div className="App" onKeyPress={this.navigate.bind(this)}>
         <div className="container">
           <div className="row">  		
             <Frame src={"http://wikipedia.org/wiki/" + this.state.currentArticle} />
