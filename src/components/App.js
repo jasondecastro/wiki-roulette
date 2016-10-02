@@ -16,8 +16,6 @@ class App extends Component {
       articles: [],
       currentArticle: ''
     }
-
-    this.checkStatus()
   }
 
   nextArticle() {
