@@ -15,6 +15,7 @@ I decided to take his concept and turn it into a web application using React and
 - [x] Implement `React Router` 
 - [x] Create an `About` component and link it with the router
 - [x] Deploy on Heroku
+- [ ] Implement Redux
 - [ ] Optimize performance even more
 
 Whew. This took about 2 days to complete. If you have any suggestions or feedback on the code, please don't hesitate to let me know.
