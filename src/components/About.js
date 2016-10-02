@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 const mainStyle = {
-  paddingLeft: '100px',
-  paddingRight: '100px',
-  paddingTop: '55px'
+  margin: '0 auto',
+  paddingTop: '25px',
+  width: '525px'
 }
 
 const paddingStyle = {
